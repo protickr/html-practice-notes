@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Practice</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <section>
+            <h2>Video</h2>
+
+            <video controls 
+                preload = "auto" 
+                muted 
+                height = "200px" 
+                width = "350px" 
+                poster = "media/images/poster.png">
+
+                <source src="media/video/rabbit320.mp4" type="video/mp4">
+                <source src="media/video/html_multimedia-and-embedding_video-and-audio-content_rabbit320.webm" type="video/webm">
+
+                <!-- <track src="rabbit_en.vtt" kind="captions" srclang="en" label="English">
+                <track src="rabbit_bn.vtt" kind="subtitles" srclang="bn" label="Bengali">
+                <track src="rabbit_es.vtt" kind="subtitles" srclang="es" label="Spanish">                 -->
+
+                <p> Couldn't load the specified video, it's directly available, at <br> 
+                    <a href="media/video/rabbit320.mp4"> here in mp4</a> <br>
+                    <a href="media/video/html_multimedia-and-embedding_video-and-audio-content_rabbit320.webm"> 
+                        here in webm</a> <br>
+                </p>
+            </video>
+        </section>
+
+        <section>
+            <h2>Audio</h2>
+            
+            <audio controls
+                preload="auto"
+                muted
+                loop
+                autoplay>
+
+                <source src="media/audio/html_multimedia-and-embedding_video-and-audio-content_viper.mp3" type="audio/mp3">
+                <source src="media/audio/html_multimedia-and-embedding_video-and-audio-content_viper.ogg" type="audio/ogg"> 
+
+                <p> Couldn't load the specified audio, it's directly available, at <br> 
+                    <a href="media/audio/html_multimedia-and-embedding_video-and-audio-content_viper.mp3"> here in mp3</a> <br>
+                    <a href="media/audio/html_multimedia-and-embedding_video-and-audio-content_viper.ogg"> here in ogg</a> <br>
+                </p>
+
+            </audio>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
