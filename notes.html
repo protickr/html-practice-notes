@@ -7,22 +7,138 @@
     <title>Document</title>
 </head>
 <body>
-    * Elements
-    * DOM or document object models structures document according to Elements
-    * Block-level elemnent and inline Elements
-    * Element nesting; inline inside block not the other way around.
-    * Empty elemement; usally inserts or embed something in the document
-    * Attribute and values
-    * Anchor or <a href="https://link.domain" title="site description will be shown on hover" target="_blank">Link Text</a>
+    <H1> Open the source code </H1>
+
+    <h2>Basics</h2>
+
+    * HTML or Hyper Text Markup Language
+
+    * Elements => <opening_tag> + Content + </closing_tag>
+
+    * Tags are case insensitive but lowercase tag name with double quote enclosed attribute values are the standard.
+
+    * DOM or document object models structures document according to how Elements are layed out by developer.
+
+    * Block-level elemnent e.g., <p> <div> and inline Elements e.g., <span> <em> <strong>
+
+    * A new line always gets added to before and after a Block-level elemnent by default by the browser.
+
+    * Element nesting; Inline elements inside Block Level elements not the other way around.
+
+    * The tags have to open and close in a way that they are inside or outside one another.
+
+    * Empty elemement; usally inserts or embed something in the document e.g., <input> <img>
+
+    * Attribute and values; <tag attribute="values"></tag>
+    
+    * Anchor or 
+        <a href="https://link.domain" title="site description will be shown on hover" target="_blank">Link Text</a>
+
     * boolean attibutes e.g., disabled, readonly, required
-    * Use double or single quotes around attribute-values
-    * To insert a special character inside quoted values or inside HTML, use HTML entities such as, &apos; &quot; &lt; &gt; &amp;  etc. 
+
+    * Use double or single quotes around attribute-values and be consistent with either style. 
+
+    * To insert a special character inside quoted values or inside HTML, use HTML entities such as, 
+        &apos; &quot; &lt; &gt; &amp;  etc. 
+
     * Anatomy of HTML document
         - <!DOCTYPE html> , it is needed to make everything else to work right.
-        - <html> </html> it is root element.
+        - <html> </html> it is the root element.
         - <head> <title> </title> </head>
         - <body> </body>
+
     * Sequence of white spaces gets reduced to a single whitespace by the HTML parser.
+
     * <!--HTML comments-->
+
+    <h2>The head and metadata</h2>
+    
+    * Content of the head element is not shown on the web page rather it contains metadata (data about data) 
+        of the whole html document.
+    
+    * HTML has a standard tag '<meta name="meta_name" content="meta_content">' to add metadata.
+
+    * <meta charset="utf-8"> this meta data specifies default character encoding for current web page.
+        though browsers like chrome can automatically correct incorrect character encoding but it is good
+        practice to add proper character encoding to ensure intended rendering.
+
+    * Title of <title>The whole html document</title> not the document content; it also appears in search engine results.
+
+    * You should use at most one <h1>Web page Heading</h1> to specify the heading for the document content.
+    
+    * <html lang="en-US"></html> specifies the default language for the html documnet and search engine indexing.
+
+    * <span lang="en-US">Content</span> specifies default language for the 'spanned Content'
+
+    * <meta name="author" content="Protick Roy">
+
+    * <meta name="description" content="Description and high ranked keywords about the web page and its contents">
+        appears in search engine results.
+
+    * <meta name="keywords" content="keywords that relates to html the document"> ignored by search engine. 
+
+    * facebook open-graph api and twitter cards metadata can be added to document head so that if anyone
+        shares the link of a page of your website it will be displayed according to provided information in 
+        custom meta data. 
+    
+    * You can also set your desired site links in google web master tools and such in other search engine so that 
+        site links will be shown properly in search results. 
+    
+    * <link rel="icon" href="favicon.ico" type="image/x-icon"> to add favorites icon; use image icon with .ico
+        format so that it is supported by all browsers and upto IE6.
+        though every other major browser supports favicon with png or jpg or gif formats as well.
+        
+        Favicon size is 16x16 px.
+        
+        <!-- third-generation iPad with high-resolution Retina display: -->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.mozilla.org/static/img/favicon144.png">    
+        (copied from Mozilla Developer network)
+
+        The title and favicon is used when bookmarking a page. 
+    
+    * link and script element should always go into the head section of the html document. 
+        <link rel="stylesheet" href="style.css" type="text/css">
+
+        <script src="script.js" type="text/javascript" defer> </script>
+        use defer with script loading so that script doesn't execute before loading the whole html document. 
+        there is also other script loading mechanism available. 
+    
+    <h2>HTML text fundamentals and Semantics</h2>
+        One of HTML's main jobs is to give text structure and meaning (also known as semantics)
+        so that a browser can display it correctly.
+        Structured content makes the reading experience easier and more enjoyable.
+        (MDN)
+
+    * <p> Use paragraph element to respresent a paragraph </p>
+
+    * <h1> Top Level Heading </h1> try to use at most once per page to set the page heading.
+
+    * <h1></h1> to <h6></h6> there are total 6 levels of headings but try to use no more than 3 in a page
+        and also maintain hierarchy such that level of heading is descending from h1 to h6
+        search engines uses heading to optimize search results.
+    
+    * Do not use semantic elements such as <p></p> <h1></h1>...<H6></H6> <strong></strong> <em></em> etc. to style
+        the content rather use non semantic <span></span> <i></i> <b></b> and style with css.
+
+    * Unordered lists
+        <ul> 
+            <li></li>
+        </ul>
+    
+    * Ordered lists
+        <ol>
+            <li></li>
+        </ol>
+    
+    * Nested lists
+        <ul>
+            <li></li>
+            <li>
+                <ol>
+                    <li></li>
+                    <li></li>
+                </ol>
+            </li>
+        </ul>
 </body>
 </html>
