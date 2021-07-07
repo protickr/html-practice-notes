@@ -9,6 +9,7 @@
 <body>
     <H1> Open the source code </H1>
 
+
     <h2>Basics</h2>
 
     * HTML or Hyper Text Markup Language
@@ -50,6 +51,8 @@
     * Sequence of white spaces gets reduced to a single whitespace by the HTML parser.
 
     * <!--HTML comments-->
+
+    
 
     <h2>The head and metadata</h2>
     
@@ -102,6 +105,8 @@
         <script src="script.js" type="text/javascript" defer> </script>
         use defer with script loading so that script doesn't execute before loading the whole html document. 
         there is also other script loading mechanism available. 
+
+
     
     <h2>HTML text fundamentals and Semantics</h2>
         One of HTML's main jobs is to give text structure and meaning (also known as semantics)
@@ -140,5 +145,61 @@
                 </ol>
             </li>
         </ul>
+    
+    * Definition lists
+        <dl>
+            <dt></dt>
+            <dd></dd>
+            <dd></dd>
+            <dt></dt>
+            <dd></dd>
+        </dl>
+        Single data term can have multiple data definitions. 
+    
+    * Emphasis <em></em>, stresses (streches) a word to give it a sarcastic meaning or a subtly different meaning to a word. 
+        makes enclosed content italic, read in a different voice by screen reader.
+
+    * Strong Importance <strong></strong>
+        stresses a word, marks words of strong importance
+        makes enclosed content bold, read in a different voice by screen reader. 
+
+        <strong>You may<em>die</em></strong>; can be nested
+    
+    * Presentational Elements such as <i></i> <u></u> <b></b> were being used to make text italic, underline or bold 
+        when CSS was not supported properly by all browsers. We should avoid using Presentational Elements as we know semantics
+        and accessibility is much more important.
+
+        HTML5 redefined these elements and added semantic meaning.
+        
+        <i></i>
+            mark up taxonomic designations: "I like <i>R. norvegicus</i>."
+            mark up a phrase in a different language compared to the surrounding text: <i lang="es">À la carte</i>
+            mark up a word when you talk about the word itself: " <i>drink</i> is both a noun and a verb
+
+        <b></b>
+            b should be used to mark up content that need to be easy to find in the text, like keywords. 
+            I also use b as headings in list items (LIs).
+            bold face element or bring attention to element. 
+
+        <u></u>
+            is used to convey a meaning traditionally conveyed by underline: proper name, misspelling...
+            As hyperlinks often have underlines and u also applies underline to the content, consider applying 
+            extra styles to denote spellings error or other styling as appropriate
+            <u class="wrong-spelling">Some misspeled word</u>
+            .wrong-spelling{
+                text-decoration: red wavy underline;
+            };
+
+    * <dfn>definition tag</dfn>
+        <p>A <dfn id="def-validator">validator</dfn> is a program that checks for syntax errors in code or documents.</p>
+        you can nest dfn with links, abbr and such. 
+
+        <a href="https://softwareengineering.stackexchange.com/questions/255366/why-are-the-b-and-i-tags-deprecated/255588">
+            Presentational Element Meaning: Source
+        </a>
+
+        <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals">
+            Mozilla Developer Docs
+        </a>
 </body>
 </html>
