@@ -211,10 +211,67 @@
             regular text.
         
         * block level link 
-            <a href="mozilla.com">
+            <a href="mozilla.com" target="_blank">
                 <img src="assignment\mozilla_splash_page\originals\firefox_logo-only_RGB-120.png" alt="mozilla logo" title="a curled up firey fox that represents mozilla firefox logo">
             </a>
+        
+        * index.html inside root directory (container directory) is entry point of a website.
+            One project can have multiple index.html but in different file-system directories. 
 
+        * Document fragments: mark part of html document in a element and give it a unique id and use that id to 
+            navigate within that page. 
+            <a href="contacts.html#mailing_list"> Mailing List </a>
+
+        * Relative to current file and Absolute same from everywhere URL 
+        
+        * Link Best Practices
+            Use contextual keywords that best describes what the link is pointing to. 
+            Do not repeat the url as link text
+            Do not say link or links as part of link text
+            Keep your link text as short as possible 
+            Minimize instances where multiple copies of same link text are linked to different places. 
+            Use relative links whereever possible. 
+            Use absolute url when linking to external website. 
+
+        * Linking to non HTML resource
+            <p>
+                <a href="https://www.example.com/large-report.pdf">
+                Download the sales report (PDF, 10MB)
+                </a>
+            </p>
+          
+            <p>
+                <a href="https://www.example.com/video-stream/" target="_blank">
+                    Watch the video (stream opens in separate tab, HD quality)
+                </a>
+            </p>
+          
+            <p>
+                <a href="https://www.example.com/car-game">
+                    Play the car game (requires Flash)
+                </a>
+             </p>
+
+        * Use download attribute when linking to a download
+            <p>
+                <a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+                    download="firefox-latest-64bit-installer.exe">
+                Download Latest Firefox for Windows (64-bit) (English, US)
+                </a>
+            </p>
+            "download" attribute value provides default save filename for the download. 
+        
+        * Email links
+            <a href="mailto:nowhere@mozilla.org">Send email to nowhere</a>
+
+            <a href="mailto:nowhere@mozilla.org?cc=name2@rapidtables.com&bcc=name3@rapidtables.com&subject=The%20subject%20of%20the%20email&body=The%20body%20of%20the%20email">
+                Send mail with cc, bcc, subject and body
+            </a>
+
+            the value of each field should be URL encoded for non printing characters like tabs spaces carriage returns 
+            with percent escaped values. 
+
+            
 
 </body>
 </html>
