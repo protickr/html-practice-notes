@@ -588,7 +588,7 @@
 
         * Use w3c / World Wide Web Consortium's HTML validator to find out syntax error and probable solution to them. 
 
-        
+
     <h2>Video and Audio</h2>
         Online Video Providers such as youtube, vimeo, dailymotion etc and audio providers like soundcloud 
         can be used to embed video and audios to your webpage. 
@@ -597,7 +597,21 @@
             <p>A fallback text if video could not be loaded or played by the browser</p>
         </video>
 
+        Formats like MP3, MP4 and WebM are called container formats. 
+        They define a structure in which the audio and/or video tracks 
+        that make up the media are stored, along with metadata describing the media, 
+        what codecs are used to encode its channels, and so forth.
+        (MDN)
 
+        ensure support for all browsers by providing different source with different formats. 
 
-    </body>
+        * <video controls>
+            <source src="path/to/video.mp4" type="video/mp4">
+            <source src="path/to/video.webm" type="video/webm"> 
+            <p>A fallback text if video could not be loaded or played by the browser</p>
+          </video>
+
+        * 
+</body>
+
 </html>
