@@ -659,6 +659,43 @@
             </audio>
             
             audio supports same features as video except for features that impart visual elements. 
+        
+        * Video Text tracks
+        
+        <track> element and WebVTT format. 
+        
+        "Transcribe" means "to write down spoken words as text." The resulting text is a "transcript." 
+
+        WebVTT is a format for writing text files containing multiple strings of text along with metadata 
+        such as the time in the video at which each text string should be displayed, 
+        and even limited styling/positioning information. These text strings are called cues, 
+        and there are several kinds of cues which are used for different purposes. The most common cues are:
+        
+        subtitles
+            Translations of foreign material, for people who don't understand the words spoken in the audio.
+        
+        captions
+            Synchronized transcriptions of dialog or descriptions of significant sounds, 
+        to let people who can't hear the audio understand what is going on.
+        
+        timed descriptions
+            Text which should be spoken by the media player in order to describe important visuals to 
+        blind or otherwise visually impaired users.
+
+        (Mozilla Developer Network)
+    
+        <video controls>
+            <source src="example.mp4" type="video/mp4">
+            <source src="example.webm" type="video/webm">
+            <track kind="subtitles" src="subtitles_es.vtt" srclang="es" label="Spanish" default>
+            <track label="Deutsch" kind="subtitles" srclang="de" src="captions/vtt/sintel-de.vtt">
+            <track label="Español" kind="subtitles" srclang="es" src="captions/vtt/sintel-es.vtt">
+        </video>
+        
+        Text tracks also help you with SEO, since search engines especially thrive on text. 
+        Text tracks even allow search engines to link directly to a spot partway through the video.
+
+
 </body>
 
 </html>
