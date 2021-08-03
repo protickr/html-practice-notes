@@ -94,7 +94,8 @@
         Favicon size is 16x16 px.
         
         <!-- third-generation iPad with high-resolution Retina display: -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.mozilla.org/static/img/favicon144.png">    
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" 
+        href="https://developer.mozilla.org/static/img/favicon144.png">    
         (copied from Mozilla Developer network)
 
         The title and favicon is used when bookmarking a page. 
@@ -167,7 +168,8 @@
         <strong>You may<em>die</em></strong>; can be nested
     
     * Presentational Elements such as <i></i> <u></u> <b></b> were being used to make text italic, underline or bold 
-        when CSS was not supported properly by all browsers. We should avoid using Presentational Elements as we know semantics
+        when CSS was not supported properly by all browsers. We should avoid using Presentational 
+        Elements as we know semantics
         and accessibility is much more important.
 
         HTML5 redefined these elements and added semantic meaning.
@@ -204,10 +206,12 @@
         </a>
 
     <h2>Hyperlinks</h2>
-        A URL can point to HTML files, text files, images, text documents, video and audio files or anything else that lives on the web.
+        A URL can point to HTML files, text files, images, text documents, video and audio files or 
+        anything else that lives on the web.
         
         * <a href="google.com" title="The popular search engine of the World Wide Web">Goggle Homepage</a>
-            link title is not available to the keyboard and touchscreen users so if the link text is so important to usability place it 
+            link title is not available to the keyboard and touchscreen users so if the link text is 
+            so important to usability place it 
             regular text.
         
         * block level link 
@@ -274,7 +278,8 @@
     <h2>Advanced Text Formatting</h2>
         * Quotations
             - Block Level Quotations
-                If a section of block level content (paragraphs, lists, etc.) is quoted from anywhere else you should wrap it
+                If a section of block level content (paragraphs, lists, etc.) is quoted from anywhere else 
+                you should wrap it
                 inside  <Blockquote>  </Blockquote> and specify the source with the "cite" attribute and value. 
 
             - Inline Quotations
@@ -293,8 +298,10 @@
                       Quotation Element</em>) indicates that the enclosed text is an extended quotation.</p>
                     </blockquote>
                     
-                    <p>The quote element — <code>&lt;q&gt;</code> — is <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
-                    for short quotations that don't require paragraph breaks.</q> -- <a href="/en-US/docs/Web/HTML/Element/q">
+                    <p>The quote element — <code>&lt;q&gt;</code> — is 
+                        <q cite="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/q">intended
+                    for short quotations that don't require paragraph breaks.</q> -- 
+                    <a href="/en-US/docs/Web/HTML/Element/q">
                     <cite>MDN q page</cite></a>.</p>
 
         * Abbreviations 
@@ -394,19 +401,22 @@
                 that makes sense on its own without the rest of the page (e.g., a single blog post).
                 
             <section> is similar to <article>, but it is more for grouping together a single part of the page 
-                that constitutes one single piece of functionality (e.g., a mini map, or a set of article headlines and summaries), 
+                that constitutes one single piece of functionality (e.g., a mini map, or a set of article headlines 
+                and summaries), 
                 or a theme. It's considered best practice to begin each section with a heading; 
                 also note that you can break <article>s up into different <section>s, or 
                 <section>s up into different <article>s, depending on the context.
                     
             <aside> contains content that is not directly related to the main content but 
-                can provide additional information indirectly related to it (glossary entries, author biography, related links, etc.).
+                can provide additional information indirectly related to it (glossary entries, author biography, 
+                related links, etc.).
 
             <header> represents a group of introductory content. 
                 If it is a child of <body> it defines the global header of a webpage, but 
                 if it's a child of an <article> or <section> it defines a specific header for that section.
 
-            <nav> contains the main navigation functionality for the page. Secondary links, etc., would not go in the navigation.
+            <nav> contains the main navigation functionality for the page. Secondary links, etc., would not go in the 
+                navigation.
 
             <footer> represents a group of end content for a page.
 
@@ -715,8 +725,95 @@
             - Clickjacking is one kind of common iframe attack where hackers embed an invisible iframe into your document 
                 (or embed your document into their own malicious website) and use it to capture users' interactions. 
                 This is a common way to mislead users or steal sensitive data.
+
+                to prevent this you can set server option X-Frame to DENY  and set CSP directives. 
             
-            - 
+            - Embed only when necessary and use https
+
+            - One important note is that you should never add both allow-scripts and allow-same-origin to your 
+                sandbox attribute — in that case, the embedded content could bypass the Same-origin policy 
+                that stops sites from executing scripts, and use JavaScript to turn off sandboxing altogether.
+            
+            - If there's any chance that certain content may be malicious (e.g., user-generated content), 
+                please serve it from a different domain to your main site.
+
+        * <object data="url/source" type="mime type"></object> and <embed src="url/source" type="mime type"> 
+                are general purpose embedding tools for embedding multiple types of external contet plugin, 
+                flash, pdf, videos and SVGs etc. Plugins and these embedding methods are really a legacy technology
+            
+            - e.g., 
+                <embed src="whoosh.swf" quality="medium"
+                bgcolor="#ffffff" width="550" height="400"
+                name="whoosh" align="middle" allowScriptAccess="sameDomain"
+                allowFullScreen="false" type="application/x-shockwave-flash"
+                pluginspage="http://www.macromedia.com/go/getflashplayer">
+            
+                <object data="mypdf.pdf" type="application/pdf"
+                    width="800" height="1200">
+                    <p>You don't have a PDF plugin, but you can
+                        <a href="mypdf.pdf">download the PDF file.
+                        </a>
+                    </p>
+                </object>
+            
+        *  It is much better to link to pdf so they can be downloaded or read on a separate page, 
+            rather than embedding them in a webpage.
+        
+    <h2>Adding Vector Grphics to the Web</h2>
+
+    * Raster images are defined using a grid of pixels — a raster image file contains information showing exactly where each pixel is to be placed, 
+        and exactly what color it should be. Popular web raster formats include Bitmap (.bmp), PNG (.png), JPEG (.jpg), and GIF (.gif.)
+    
+    * Vector images are defined using algorithms — a vector image file contains shape and path definitions that 
+        the computer can use to work out what the image should look like when rendered on the screen. 
+        The SVG format allows us to create powerful vector graphics for use on the Web.
+    
+    * SVG is an XML-based language for describing vector images. It's basically markup, like HTML, except that you've got 
+        many different elements for defining the shapes you want to appear in your image, 
+        and the effects you want to apply to those shapes. SVG is for marking up graphics, not content.
+
+        At the simplest end of the spectrum, you've got elements for creating simple shapes, like <circle> and <rect>. 
+        More advanced SVG features include <feColorMatrix> (transform colors using a transformation matrix,) 
+        <animate> (animate parts of your vector graphic,) and <mask> (apply a mask over the top of your image.)
+    
+        - For creating SVG images, most people use a vector graphics editor like Inkscape or Illustrator.
+    
+    * SVG has some additional advantages besides those described so far:
+
+        - Text in vector images remains accessible (which also benefits your SEO).
+        - SVGs lend themselves well to styling/scripting, because each component of the image is an element 
+            that can be styled via CSS or scripted via JavaScript.
+        
+        SVG does have some disadvantages:
+        
+        - SVG can get complicated very quickly, meaning that file sizes can grow; complex SVGs 
+            can also take significant processing time in the browser.
+        - SVG can be harder to create than raster images, depending on what kind of image you are trying to create.
+        - SVG is not supported in older browsers, so may not be suitable if you need to support older 
+            versions of Internet Explorer with your web site (SVG started being supported as of IE9.)
+        - Raster graphics are arguably better for complex precision images such as photos, for the reasons described above.
+    
+    * You can add SVG into your HTML document by, 
+        <img src=".png" alt="" srcset=".svg">
+        
+        or 
+
+        <svg width="" height="" >
+            <rect width="100%" height="100%" fill="green" /> 
+        </svg>
+    
+    * You can also use SVGs as CSS background images, as shown below. In the below code, older 
+        browsers will stick with the PNG that they understand, while newer browsers will load the SVG:
+        
+        background: url("fallback.png") no-repeat center;
+        background-image: url("image.svg");
+        background-size: contain;
+
+    
+    *   <iframe src="triangle.svg" width="500" height="500" sandbox>
+            <img src="triangle.png" alt="Triangle with three unequal sides" />
+        </iframe>
+    
 </body>
 
 </html>
