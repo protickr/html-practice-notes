@@ -761,58 +761,137 @@
         
     <h2>Adding Vector Grphics to the Web</h2>
 
-    * Raster images are defined using a grid of pixels — a raster image file contains information showing exactly where each pixel is to be placed, 
-        and exactly what color it should be. Popular web raster formats include Bitmap (.bmp), PNG (.png), JPEG (.jpg), and GIF (.gif.)
+        * Raster images are defined using a grid of pixels — a raster image file contains information showing exactly where each pixel is to be placed, 
+            and exactly what color it should be. Popular web raster formats include Bitmap (.bmp), PNG (.png), JPEG (.jpg), and GIF (.gif.)
     
-    * Vector images are defined using algorithms — a vector image file contains shape and path definitions that 
-        the computer can use to work out what the image should look like when rendered on the screen. 
-        The SVG format allows us to create powerful vector graphics for use on the Web.
+        * Vector images are defined using algorithms — a vector image file contains shape and path definitions that 
+            the computer can use to work out what the image should look like when rendered on the screen. 
+            The SVG format allows us to create powerful vector graphics for use on the Web.
     
-    * SVG is an XML-based language for describing vector images. It's basically markup, like HTML, except that you've got 
-        many different elements for defining the shapes you want to appear in your image, 
-        and the effects you want to apply to those shapes. SVG is for marking up graphics, not content.
+        * SVG is an XML-based language for describing vector images. It's basically markup, like HTML, except that you've got 
+            many different elements for defining the shapes you want to appear in your image, 
+            and the effects you want to apply to those shapes. SVG is for marking up graphics, not content.
 
         At the simplest end of the spectrum, you've got elements for creating simple shapes, like <circle> and <rect>. 
-        More advanced SVG features include <feColorMatrix> (transform colors using a transformation matrix,) 
-        <animate> (animate parts of your vector graphic,) and <mask> (apply a mask over the top of your image.)
+            More advanced SVG features include <feColorMatrix> (transform colors using a transformation matrix,) 
+            <animate> (animate parts of your vector graphic,) and <mask> (apply a mask over the top of your image.)
     
-        - For creating SVG images, most people use a vector graphics editor like Inkscape or Illustrator.
+            - For creating SVG images, most people use a vector graphics editor like Inkscape or Illustrator.
     
-    * SVG has some additional advantages besides those described so far:
+        * SVG has some additional advantages besides those described so far:
 
-        - Text in vector images remains accessible (which also benefits your SEO).
-        - SVGs lend themselves well to styling/scripting, because each component of the image is an element 
-            that can be styled via CSS or scripted via JavaScript.
+            - Text in vector images remains accessible (which also benefits your SEO).
+            - SVGs lend themselves well to styling/scripting, because each component of the image is an element 
+                that can be styled via CSS or scripted via JavaScript.
         
-        SVG does have some disadvantages:
+            SVG does have some disadvantages:
         
-        - SVG can get complicated very quickly, meaning that file sizes can grow; complex SVGs 
-            can also take significant processing time in the browser.
-        - SVG can be harder to create than raster images, depending on what kind of image you are trying to create.
-        - SVG is not supported in older browsers, so may not be suitable if you need to support older 
-            versions of Internet Explorer with your web site (SVG started being supported as of IE9.)
-        - Raster graphics are arguably better for complex precision images such as photos, for the reasons described above.
+            - SVG can get complicated very quickly, meaning that file sizes can grow; complex SVGs 
+                can also take significant processing time in the browser.
+            - SVG can be harder to create than raster images, depending on what kind of image you are trying to create.
+            - SVG is not supported in older browsers, so may not be suitable if you need to support older 
+                versions of Internet Explorer with your web site (SVG started being supported as of IE9.)
+            - Raster graphics are arguably better for complex precision images such as photos, for the reasons described above.
     
-    * You can add SVG into your HTML document by, 
-        <img src=".png" alt="" srcset=".svg">
-        
-        or 
+        * You can add SVG into your HTML document by, 
+            <img src=".png" alt="" srcset=".svg">
+            
+            or 
 
-        <svg width="" height="" >
-            <rect width="100%" height="100%" fill="green" /> 
-        </svg>
-    
-    * You can also use SVGs as CSS background images, as shown below. In the below code, older 
-        browsers will stick with the PNG that they understand, while newer browsers will load the SVG:
+            <svg width="" height="" >
+                <rect width="100%" height="100%" fill="green" /> 
+            </svg>
         
-        background: url("fallback.png") no-repeat center;
-        background-image: url("image.svg");
-        background-size: contain;
+        * You can also use SVGs as CSS background images, as shown below. In the below code, older 
+            browsers will stick with the PNG that they understand, while newer browsers will load the SVG:
+            
+            background: url("fallback.png") no-repeat center;
+            background-image: url("image.svg");
+            background-size: contain;
 
+        
+        *   <iframe src="triangle.svg" width="500" height="500" sandbox>
+                <img src="triangle.png" alt="Triangle with three unequal sides" />
+            </iframe>
+            
+            - unless the SVG and your current webpage have the same origin, 
+                you cannot use JavaScript on your main webpage to manipulate the SVG.
     
-    *   <iframe src="triangle.svg" width="500" height="500" sandbox>
-            <img src="triangle.png" alt="Triangle with three unequal sides" />
-        </iframe>
+    <h2>Responsive Image</h2>
+            
+        - Resolution switching
+            same image different resolution for different viewport
+
+            The standard img element only lets us point browser to single source file. 
+
+
+            adding two new attributes "srcset" and "sizes" to solve resolution switching problem.
+            <img srcset="assignment/mozilla_splash_page/originals/firefox_logo-only_RGB-120.png 120w,
+                        assignment/mozilla_splash_page/originals/firefox_logo-only_RGB-400.png 400w, 
+                        assignment/mozilla_splash_page/originals/firefox_logo-only_RGB.png 1200w
+                " 
+                sizes=" (max-width: 400px) 120px, 
+                        (max-width: 600px) 400px, 
+                        1200px
+                "
+
+            src="assignment/mozilla_splash_page/originals/firefox_logo-only_RGB.png" 
+            alt="A curled up fiery fox that represents mozilla firefox">
+
+            Note: 
+
+            srcset 
+                defines the set of images we will allow the browser to choose between, and what size each image is.
+
+            Each set of image information is separated from the previous one by a comma. For each one, we write:
+                An image filename (elva-fairy-480w.jpg)
+                A space
+                The image's intrinsic width in pixels (480w) — note that this uses the w unit, 
+                not px as you might expect. 
+                This is the image's real size, which can be found by inspecting the image file on your computer (for example, 
+                on a Mac you can select the image in Finder and press Cmd + I to bring up the info screen).
+
+            sizes 
+                defines a set of media conditions (e.g. screen widths) and indicates what image size 
+                would be best to choose, when certain media conditions are true — these are the hints we 
+                talked about earlier. In this case, before each comma we write:
+
+                    A media condition ((max-width:600px)) — you'll learn more about these in the CSS topic, but for now let's just say that a media condition describes a possible state that the screen can be in. In this case, we are saying "when the viewport width is 600 pixels or less".
+                    A space
+                    The width of the slot the image will fill when the media condition is true (480px)
+
+                    Note: For the slot width, you may provide an absolute length (px, em) or a 
+                    length relative to the viewport (vw), but not percentages. 
+                    You may have noticed that the last slot width has no media condition 
+                    (this is the default that is chosen when none of the media conditions are true). 
+                    The browser ignores everything after the first matching condition, so be careful how you order 
+                    the media conditions.
+
+            So, with these attributes in place, the browser will:
+                Look at its device width.
+                Work out which media condition in the sizes list is the first one to be true.
+                Look at the slot size given to that media query.
+                Load the image referenced in the srcset list that has the same size as the slot or, 
+                if there isn't one, the first image that is bigger than the chosen slot size.
+            
+                * document.querySelector('html').clientWidth)
+                * <meta name="viewport" content="width=device-width">
+                * about:debugging
+            
+            If you are supporting multiple display resolutions but the image is shown in same real-world size on the screen then you can use x-descriptors with your image using srcset and without sizes attribute. 
+
+            <img srcset="elva-fairy-320w.jpg,
+                        elva-fairy-480w.jpg 1.5x,
+                        elva-fairy-640w.jpg 2x"
+                src="elva-fairy-640w.jpg"
+                alt="Elva dressed as a fairy">
+
+            same size on the screen but different pixel density 
+
+        - Art direction
+            different suitable image for different viewport
+        
+        
     
 </body>
 
