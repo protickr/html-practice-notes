@@ -878,7 +878,8 @@
                 * <meta name="viewport" content="width=device-width">
                 * about:debugging
             
-            If you are supporting multiple display resolutions but the image is shown in same real-world size on the screen then you can use x-descriptors with your image using srcset and without sizes attribute. 
+            If you are supporting multiple display resolutions but the image is shown in same real-world size on the screen 
+            then you can use x-descriptors with your image using srcset and without sizes attribute. 
 
             <img srcset="elva-fairy-320w.jpg,
                         elva-fairy-480w.jpg 1.5x,
@@ -887,11 +888,37 @@
                 alt="Elva dressed as a fairy">
 
             same size on the screen but different pixel density 
+            the x-descriptors defines device pixel density multiplier of one css pixel
+
 
         - Art direction
             different suitable image for different viewport
+
+            <picture>
+                <source media="(max-width: 799px)" srcset="elva-480w-close-portrait.jpg">
+                <source media="(min-width: 800px)" srcset="elva-800w.jpg">
+                <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva">
+              </picture>
+              
+            Note: You should use the media attribute only in art direction scenarios; 
+            when you do use media, don't also offer media conditions within the sizes attribute. 
         
-        
+            New image formats like WebP and AVIF can maintain a low file size and high quality at the same time. 
+            These formats now have relatively broad browser support but little "historical depth".
+
+            <picture> </picture>
+                lets us continue catering to older browsers. 
+                You can supply MIME types inside type attributes so the browser can immediately reject unsupported file types:
+            
+            <picture>
+              <source type="image/svg+xml" srcset="pyramid.svg">
+              <source type="image/webp" srcset="pyramid.webp">
+              <img src="pyramid.png" alt="regular pyramid built from four equilateral triangles">
+            </picture>
+
+            * Do not use the media attribute, unless you also need art direction.
+            * In a <source> element, you can only refer to images of the type declared in type.
+            * Use comma-separated lists with srcset and sizes, as needed.
     
 </body>
 
