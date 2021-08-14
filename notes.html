@@ -761,8 +761,9 @@
         
     <h2>Adding Vector Grphics to the Web</h2>
 
-        * Raster images are defined using a grid of pixels — a raster image file contains information showing exactly where each pixel is to be placed, 
-            and exactly what color it should be. Popular web raster formats include Bitmap (.bmp), PNG (.png), JPEG (.jpg), and GIF (.gif.)
+        * Raster images are defined using a grid of pixels — a raster image file contains information showing exactly 
+            where each pixel is to be placed, and exactly what color it should be. Popular web raster formats 
+            include Bitmap (.bmp), PNG (.png), JPEG (.jpg), and GIF (.gif.)
     
         * Vector images are defined using algorithms — a vector image file contains shape and path definitions that 
             the computer can use to work out what the image should look like when rendered on the screen. 
@@ -856,9 +857,10 @@
                 would be best to choose, when certain media conditions are true — these are the hints we 
                 talked about earlier. In this case, before each comma we write:
 
-                    A media condition ((max-width:600px)) — you'll learn more about these in the CSS topic, but for now let's just say that a media condition describes a possible state that the screen can be in. In this case, we are saying "when the viewport width is 600 pixels or less".
-                    A space
-                    The width of the slot the image will fill when the media condition is true (480px)
+                    A media condition ((max-width:600px)) — you'll learn more about these in the CSS topic, but for 
+                    now let's just say that a media condition describes a possible state that the screen can be in. 
+                    In this case, we are saying "when the viewport width is 600 pixels or less".
+                    A space The width of the slot the image will fill when the media condition is true (480px)
 
                     Note: For the slot width, you may provide an absolute length (px, em) or a 
                     length relative to the viewport (vw), but not percentages. 
@@ -908,7 +910,8 @@
 
             <picture> </picture>
                 lets us continue catering to older browsers. 
-                You can supply MIME types inside type attributes so the browser can immediately reject unsupported file types:
+                You can supply MIME types inside type attributes so the browser can immediately reject 
+                unsupported file types:
             
             <picture>
               <source type="image/svg+xml" srcset="pyramid.svg">
@@ -919,7 +922,92 @@
             * Do not use the media attribute, unless you also need art direction.
             * In a <source> element, you can only refer to images of the type declared in type.
             * Use comma-separated lists with srcset and sizes, as needed.
+
+    <h2>Table</h2>
+
+    Tables are very commonly used in human society, and have been for a long time, as evidenced by this US Census 
+    document from 1800. A table allows you to quickly and easily look up values that indicate some kind of connection 
+    between different types of data. When done correctly, even blind people can interpret tabular data in an HTML table 
+    — a successful HTML table should enhance the experience of sighted and visually impaired users alike.
+
+    Table should not be used for laying out web pages and proper CSS should be applied to increase 
+    readability and html to provide the table structure.
+
+    * table thead tbody tfoot  
+    * td (table data) tr (table row) th (table header) 
+    * rowspan, colspan
+    * style entire column with col 
+        we can specify styling information once, on a <col> element. 
+        <col> elements are  specified inside a <colgroup> container just below the opening <table> tag.
+        If we are not styling a column, we still have to include a blank <col> element — 
+        if we didn't, the styling would just be applied to the earlier column.
+        colgroup and col element should come just below the table tag
+        and thead should come just below the colgroup element in that case.
     
+        Note: 
+            Styling columns like this is limited to a few properties: border, background, width, and visibility. To set 
+            other properties you'll have to either style every <td> or <th> in the column, or use a complex selector such 
+            as :nth-child.
+        
+        you can also use span attribute with col element to specify same stying for two consecutive columns. 
+
+    * Table caption
+        You can give your table a caption by putting it inside a <caption>  </caption> element and nesting that inside 
+        the table element. You should put it just below the opening table tag.
+        The caption is meant to contain a description of the table contents.
+    
+        so finally table->caption->colgroup->thead
+
+    * Adding structure to table
+        thead tbody tfoot
+        these structural elements doesn't increase accessibility but gives you more control over the table; 
+        alse even if you do not specify tbody the browser will implicitely include it but it is a good practice 
+        to include it yourself.
+
+    * Table can be nested as well
+
+    * The combination of column and row headers will identify and interpret the data in each cell 
+        so that screenreader users can interpret the table similarly to how a sighted user does.
+    
+    * scope attribute, which can be added to the th element to tell screenreaders exactly what cells 
+        the header is a header for — is it a header for the row it is in, or the column.
+        th scope = row / col 
+
+    * scope has two more possible values — colgroup and rowgroup. 
+        these are used for headings that sit over the top of multiple columns or rows
+    
+    * An alternative to using the scope attribute is to use id and headers attributes to create associations 
+        between headers and cells. The way they are used is as follows:
+        - You add a unique id to each th element.
+        - You add a headers attribute to each td element. Each headers attribute has to contain a list of the ids 
+            of all the th elements that act as a header for that cell, separated by spaces.
+    
+        -   <thead>
+                <tr>
+                <th id="purchase">Purchase</th>
+                <th id="location">Location</th>
+                <th id="date">Date</th>
+                <th id="evaluation">Evaluation</th>
+                <th id="cost">Cost (€)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th id="haircut">Haircut</th>
+                    <td headers="location haircut">Hairdresser</td>
+                    <td headers="date haircut">12/09</td>
+                    <td headers="evaluation haircut">Great idea</td>
+                    <td headers="cost haircut">30</td>
+                </tr>
+                
+                    ...
+                
+            </tbody>
+        
+        - Note: This method creates very precise associations between headers and data cells but it uses 
+            a lot more markup and does not leave any room for errors.  
+            The scope approach is usually enough for most tables.
+
 </body>
 
 </html>
