@@ -578,6 +578,9 @@
         
         * Width and height attribute provide values that will be used to leave space for image until its loaded
 
+        * title attribute with img element is not really neccessary as it is only visible on mouse hover, 
+              instead put extra supporting information in main text so that it is available to all users.
+
         * Annotate figure with figure and figcaption
               <figure>
                   <img src="" alt="">
@@ -903,7 +906,7 @@
                 <source media="(max-width: 799px)" srcset="elva-480w-close-portrait.jpg">
                 <source media="(min-width: 800px)" srcset="elva-800w.jpg">
                 <img src="elva-800w.jpg" alt="Chris standing up holding his daughter Elva">
-              </picture>
+            </picture>
               
             Note: You should use the media attribute only in art direction scenarios; 
             when you do use media, don't also offer media conditions within the sizes attribute. 
